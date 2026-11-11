@@ -5,10 +5,7 @@ from pathlib import Path
 INPUT_FILE = "ligands.tsv"
 
 # Output directories
-OUTPUT_DIR = Path("output")
-ACTIVE_DIR = OUTPUT_DIR / "active"
-INACTIVE_DIR = OUTPUT_DIR / "inactive"
-
+OUTPUT_DIR = Path("ligands")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 # Read TSV file
@@ -42,6 +39,4 @@ inactive[["Smiles", "Molecule ChEMBL ID"]].to_csv(
 print(f"Total compounds: {len(df)}")
 print(f"Active compounds (<50): {len(active)}")
 print(f"Inactive compounds (>50): {len(inactive)}")
-print(f"Compounds with Standard Value = 50: "
-      f"{len(df[df['Standard Value'] == 50])}")
 print(f"\nOutput saved to: {OUTPUT_DIR.resolve()}")
